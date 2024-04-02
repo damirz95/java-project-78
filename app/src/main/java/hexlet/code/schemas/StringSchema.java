@@ -54,12 +54,4 @@ public class StringSchema {
     public boolean isSize(String text) {
         return text.length() >= minLength;
     }
-    @Override
-    public String toString() {
-        return "StringSchema{" +
-                "requiredStatus=" + requiredStatus +
-                ", minLength=" + minLength +
-                ", controlText='" + controlText + '\'' +
-                '}';
-    }
 }

@@ -4,21 +4,21 @@ import org.junit.jupiter.api.Test;
 
 public class ApplicationTest {
     @Test
-    public void testOne() {
+    public void testString() {
         var v = new Validator();
         var schema = v.string();
         schema.required();
         schema.contains("test1 or test");
         var expected = true;
-        assertThat(expected).isEqualTo(schema.isValid(""));
+        assertThat(schema.isValid("test")).isEqualTo(expected);
     }
     @Test
-    public void testTwo() {
+    public void testNumber() {
         var v = new Validator();
-        var schema = v.string();
-        schema.minLength(10);
-        schema.minLength(4);
+        var schema = v.number();
         var expected = true;
-        assertThat(expected).isEqualTo(schema.isValid("Hexlet"));
+        schema.required();
+        schema.range(5, 10);
+        assertThat(schema.isValid(5)).isEqualTo(expected);
     }
 }
