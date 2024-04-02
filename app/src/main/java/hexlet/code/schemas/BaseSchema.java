@@ -1,35 +1,21 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public class BaseSchema<T> {
-    public void isVoid(T data) {
-        ArrayList<Boolean> flags = new ArrayList<>();
-        if(requiredStatus) {
-            flags.add(isRequired(number));
-        } else {
-            flags.add(true);
-        }
-        if(T) {
-            flags.add(isPositive(number));
-        } else {
-            flags.add(true);
-        }
-        if (rangeArr != null) {
-            flags.add(isInRange(number));
-        } else {
-            flags.add(true);
-        }
-        int count = 0;
-        for (var flag: flags) {
-            if(flag) {
-                count++;
-            }
-        }
-        if(count == 3) {
-            System.out.println(true);;
-        } else {
-            System.out.println(false);;
-        }
+public abstract class BaseSchema<T> {
+    private final Map<String, Predicate<T>> checks;
+
+    protected BaseSchema() {
+        this.checks = new HashMap<>();
+    }
+
+    protected final void addCheck(String name, Predicate<T> check) {
+        checks.put(name, check);
+    }
+
+    public final boolean isValid(T value) {
+        return checks.values().stream().allMatch(check -> check.test(value));
     }
 }
