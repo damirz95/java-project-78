@@ -2,7 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    application
+    java
     jacoco
     checkstyle
     id("com.github.ben-manes.versions") version "0.50.0"
@@ -12,8 +12,6 @@ group = "hexlet.code"
 version = "1.0-SNAPSHOT"
 
 repositories { mavenCentral() }
-
-//application { mainClass.set("hexlet.code.App") }
 
 dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
@@ -27,9 +25,9 @@ java {
         languageVersion.set(JavaLanguageVersion.of(20))
     }
 }
-tasks.getByName("run", JavaExec::class) {
+/*tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
-}
+}*/
 
 tasks.test {
     useJUnitPlatform()

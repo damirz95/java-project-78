@@ -1,57 +1,22 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
-public class StringSchema {
-    private boolean requiredStatus;
-    private int minLength;
-    private String controlText;
+import static java.util.Objects.isNull;
+
+public class StringSchema extends BaseSchema<String>{
     public void required() {
-        this.requiredStatus = true;
+        addCheck("required",value -> {
+            return !isNull(value) && !value.isEmpty();
+        });
     }
-    public void minLength(int length) {
-        this.minLength = length;
-    }
-    public void contains(String text) {
-        this.controlText = text;
-    }
-    public boolean isValid(String text) {
-        ArrayList<Boolean> flags = new ArrayList<>();
-        if(requiredStatus) {
-            flags.add(isRequired(text));
-        } else {
-            flags.add(true);
-        }
-        if (minLength > 0) {
-            flags.add(isSize(text));
-        } else {
-            flags.add(true);
-        }
-        if( controlText !=null ) {
-            flags.add(isContains(text));
-        } else {
-            flags.add(true);
-        }
-        int count = 0;
-        for (var flag: flags) {
-            if(flag) {
-                count++;
-            }
-        }
-        if(count == 3) {
-            return true;
-        } else {
-            return false;
-        }
 
+    public void minLength(int length) {
+        addCheck("minLength", value -> length <= value.length() );
     }
-    public boolean isRequired(String text) {
-        return !text.isEmpty() && text != null;
+
+    public void contains(String text) {
+        addCheck("contains", value -> text.contains(value));
     }
-    public boolean isContains(String text) {
-        return controlText.contains(text);
-    }
-    public boolean isSize(String text) {
-        return text.length() >= minLength;
-    }
+
 }
