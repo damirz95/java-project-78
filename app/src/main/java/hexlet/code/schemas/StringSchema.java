@@ -3,16 +3,19 @@ package hexlet.code.schemas;
 import static java.util.Objects.isNull;
 
 public class StringSchema extends BaseSchema<String>{
-    public void required() {
+    public StringSchema required() {
         addCheck("required",value -> !isNull(value) && !value.isEmpty());
+        return null;
     }
 
-    public void minLength(int length) {
+    public StringSchema minLength(int length) {
         addCheck("minLength", value -> length <= value.length());
+        return null;
     }
 
-    public void contains(String text) {
+    public StringSchema contains(String text) {
         addCheck("contains", value -> text.contains(value));
+        return null;
     }
 
 }

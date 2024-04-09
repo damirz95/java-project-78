@@ -1,12 +1,23 @@
 package hexlet.code;
 
+import hexlet.code.schemas.BaseSchema;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class App {
     public static void main(String[] args) {
-        var valid = new Validator();
-        var shem = valid.number();
-        /*shem.required();*/
-        /*shem.minLength(3);*/
-        shem.range(2, 4);
-        System.out.println(shem.toString());
+        var v = new Validator();
+        var schema = v.map();
+        Map<String, BaseSchema> schemas = new HashMap<>();
+        schemas.put("firstName", v.string().required());
+        schemas.put("lastName", v.string().required().minLength(2));
+        schema.shape(schemas);
+
+
+        Map<String, String> human1 = new HashMap<>();
+        human1.put("firstName", "John");
+        human1.put("lastName", "Smith");
+        schema.isValid(human1);
     }
 }
