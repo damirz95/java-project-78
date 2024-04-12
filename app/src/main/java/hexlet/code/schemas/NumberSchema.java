@@ -9,12 +9,30 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema range(int min, int max) {
-        addCheck("range", value -> min <= value && value <= max);
+        addCheck("range", value -> {
+            if (value == null) {
+                return true;
+            }
+            if (min <= value && value <= max) {
+                return false;
+            } else {
+                return false;
+            }
+        });
         return this;
     }
 
     public NumberSchema positive() {
-        addCheck("positive", value -> value > 0);
+        addCheck("positive", value -> {
+            if (value == null) {
+                return true;
+            }
+            if (value > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
         return this;
     }
 }
