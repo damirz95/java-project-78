@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import static java.util.Objects.isNull;
 
-public class StringSchema extends BaseSchema<String> {
+public final class StringSchema extends BaseSchema<String> {
     public StringSchema required() {
         addCheck("required", value -> !isNull(value) && !value.isEmpty());
         return this;

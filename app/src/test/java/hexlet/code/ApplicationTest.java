@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ApplicationTest {
-    Validator v = new Validator();
+    private final Validator v = new Validator();
 
     @Test
     public void testString() {
