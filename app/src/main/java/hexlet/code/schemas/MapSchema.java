@@ -16,18 +16,18 @@ public class MapSchema extends BaseSchema<Map> {
         return this;
     }
 
-    public void shape(Map<String, BaseSchema> map) {
+    public void shape(Map<String, BaseSchema<String>> map) {
         addCheck("shape", shapeCheck(map));
     }
 
-    public Predicate<Map> shapeCheck(Map<String, BaseSchema> inputSchema) {
+    public Predicate<Map> shapeCheck(Map<String, BaseSchema<String>> inputSchema) {
         return map -> {
-            for (Map.Entry<String, BaseSchema> entry: inputSchema.entrySet()) {
+            for (Map.Entry<String, BaseSchema<String>> entry: inputSchema.entrySet()) {
                 String key = entry.getKey();
                 Map name = (Map) map;
                 var data = name.get(key);
                 var schema = inputSchema.get(key);
-                if (!schema.isValid(data)) {
+                if (!schema.isValid((String) data)) {
                     return false;
                 }
             }
