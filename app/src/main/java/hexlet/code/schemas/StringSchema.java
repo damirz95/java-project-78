@@ -14,7 +14,7 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     public StringSchema contains(String text) {
-        addCheck("contains", value -> text.contains(value));
+        addCheck("contains", value -> value.contains(text));
         return this;
     }
 }

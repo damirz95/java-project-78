@@ -7,6 +7,8 @@ install:
 	make -C app install
 run:
 	make -C app run
+run-dist:
+	make -C app run-dist
 test:
 	make -C app test
 lint:

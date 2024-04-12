@@ -25,7 +25,6 @@ java {
         languageVersion.set(JavaLanguageVersion.of(20))
     }
 }
-
 tasks.test {
     useJUnitPlatform()
     // https://technology.lastminute.com/junit5-kotlin-and-gradle-dsl/

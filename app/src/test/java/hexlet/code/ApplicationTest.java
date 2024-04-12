@@ -12,19 +12,21 @@ public class ApplicationTest {
 
     @Test
     public void testString() {
-        var schema = v.string();
-        schema.required();
-        schema.minLength(4);
-        schema.contains("is null");
-        assertThat(schema.isValid("null")).isEqualTo(true);
+        var schema = v.string().required().minLength(2).contains("what");
+        assertThat(schema.isValid("what does the fox say")).isEqualTo(true);
     }
+    /*@Test
+    public void testValidator() {
+        var schema = v.string();
+        assertThat(schema).isEqualTo();
+    }*/
     @Test
     public void testNumber() {
         var schema = v.number();
         schema.required();
         schema.positive();
-        schema.range(-5, 10);
-        assertThat(schema.isValid(1)).isEqualTo(true);
+        schema.range(5, 10);
+        assertThat(schema.isValid(5)).isEqualTo(true);
     }
     @Test
     public void testMap() {
