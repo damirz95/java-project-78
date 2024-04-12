@@ -51,6 +51,7 @@ public class ApplicationTest {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("firstName", v.string().required());
         schemas.put("lastName", v.string().minLength(2));
+        System.out.println("schemas :" + schemas );
         schema.shape(schemas);
 
         Map<String, String> human1 = new HashMap<>();

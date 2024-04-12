@@ -25,9 +25,6 @@ java {
         languageVersion.set(JavaLanguageVersion.of(20))
     }
 }
-/*tasks.getByName("run", JavaExec::class) {
-    standardInput = System.`in`
-}*/
 
 tasks.test {
     useJUnitPlatform()
