@@ -12,11 +12,8 @@ public class NumberSchema extends BaseSchema<Integer> {
         addCheck("range", value -> {
             if (value == null) {
                 return true;
-            }
-            if (min <= value && value <= max) {
-                return false;
             } else {
-                return false;
+                return min <= value && value <= max;
             }
         });
         return this;
@@ -26,11 +23,8 @@ public class NumberSchema extends BaseSchema<Integer> {
         addCheck("positive", value -> {
             if (value == null) {
                 return true;
-            }
-            if (value > 0) {
-                return true;
             } else {
-                return false;
+                return value > 0;
             }
         });
         return this;
