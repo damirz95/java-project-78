@@ -2,8 +2,8 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    java
     jacoco
+    java
     checkstyle
     id("com.github.ben-manes.versions") version "0.50.0"
 }
@@ -25,6 +25,7 @@ java {
         languageVersion.set(JavaLanguageVersion.of(20))
     }
 }
+
 tasks.test {
     useJUnitPlatform()
     // https://technology.lastminute.com/junit5-kotlin-and-gradle-dsl/
@@ -35,6 +36,10 @@ tasks.test {
         // showCauses = true
         showStandardStreams = true
     }
+}
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
 }
 
 tasks.jacocoTestReport { reports { xml.required.set(true) } }
