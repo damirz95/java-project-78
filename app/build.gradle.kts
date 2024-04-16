@@ -38,9 +38,6 @@ tasks.test {
         showStandardStreams = true
     }
 }
-jacoco {
-    toolVersion = "0.8.11"
-    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
-}
 
 tasks.jacocoTestReport { reports { xml.required.set(true) } }
+
