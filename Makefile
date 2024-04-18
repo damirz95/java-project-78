@@ -16,7 +16,3 @@ lint:
 
 report:
 	make -C app report
-
-update-deps:
-	make -C app update-deps
-.PHONY: build

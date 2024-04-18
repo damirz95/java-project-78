@@ -36,6 +36,7 @@ public class ApplicationTest {
         assertThat(schema.isValid("help")).isFalse();
 
     }
+
     @Test
     public void testNumber() {
         var v = new Validator();
@@ -63,6 +64,7 @@ public class ApplicationTest {
         assertThat(schema.isValid(5)).isFalse();
         assertThat(schema.isValid(10)).isFalse();
     }
+
     @Test
     public void testMap() {
         var v = new Validator();

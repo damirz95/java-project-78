@@ -17,7 +17,4 @@ report:
 lint:
 	./gradlew checkstyleMain
 
-update-deps:
-	make -C app update-deps
-
 .PHONY: build
